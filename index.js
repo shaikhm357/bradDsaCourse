@@ -1,19 +1,29 @@
-function reverseString(str) {
-  let reverse = "";
+console.log(isPalindrome('"hell$#$#o'));
+
+function isPalindrome(str) {
+  let formatted = removeNonAlphanumeric(str.toLowerCase());
+  let reversed = "";
+  for (let i = formatted.length - 1; i >= 0; i--) {
+    reversed += formatted[i];
+  }
+  return formatted === reversed;
+}
+
+function removeNonAlphanumeric(str) {
+  let formatted = "";
   for (let i = 0; i < str.length; i++) {
-    reverse = str[i] + reverse;
+    if (isAlphanumeric(str[i])) {
+      formatted += str[i];
+    }
   }
-  return reverse;
+  return formatted;
 }
 
-console.log(reverseString("hello"));
-
-function reverseStringBack(str) {
-  let reverse = "";
-  for (let i = str.length - 1; i >= 0; i--) {
-    reverse += str[i];
+function isAlphanumeric(char) {
+  let code = char.charCodeAt();
+  if ((code >= 48 && code <= 57) || (code >= 97 && code <= 122)) {
+    return true;
+  } else {
+    return false;
   }
-  console.log(reverse);
 }
-
-reverseStringBack("hello world");
