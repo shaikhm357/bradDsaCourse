@@ -1,25 +1,11 @@
-function countVowels(str) {
-  str = str.toLowerCase();
-  let count = 0;
-  for (let i = 0; i < str.length; i++) {
-    if (isVowel(str[i])) {
-      count++;
+function removeDuplicates(arr) {
+  const unique = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (!unique.includes(arr[i])) {
+      unique.push(arr[i]);
     }
   }
-  return count;
+  console.log(unique);
 }
 
-function isVowel(char) {
-  const vowels = ["a", "i", "o", "e", "u"];
-  let isVowel = false;
-  for (let i = 0; i < vowels.length; i++) {
-    if (char === vowels[i]) {
-      isVowel = true;
-      break;
-    }
-  }
-  return isVowel;
-}
-
-console.log(countVowels("aieou"));
-// isVowel("o");
+removeDuplicates([2, 4, 4, 5, 5, 6, 6, 6, 6]);
