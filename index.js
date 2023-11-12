@@ -13,12 +13,12 @@ function calculator(num1, num2, operator) {
       return num1 / num2;
       break;
     default:
-      console.log("only support +,-,* and /");
+      return console.log("only support +,-,* and /");
+      break;
   }
-  return ans;
 }
 
-let arr = ["+", "-", "*", "/"];
+let arr = ["+", "-", "*", "/", "%"];
 for (let i = 0; i < arr.length; i++) {
   console.log(calculator(6, 2, arr[i]), "\n");
 }
