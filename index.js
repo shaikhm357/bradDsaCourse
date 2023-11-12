@@ -1,20 +1,8 @@
-// build method
-function findMax(arr) {
-  return Math.max(...arr);
-}
-
-console.log(findMax([2, 3, 66, 4, 7, 8]));
-
-// using loop
-function findMaxUsingLoop(arr) {
-  let max = arr[0];
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > max) {
-      max = arr[i];
-    }
+function titileCase(str) {
+  let arrOfWord = str.toLowerCase().split(" ");
+  for (let i = 0; i < arrOfWord.length; i++) {
+    arrOfWord[i] = arrOfWord[i][0].toUpperCase() + arrOfWord[i].slice(1);
   }
-
-  console.log(max);
+  return arrOfWord.join(" ");
 }
-
-findMaxUsingLoop([2, 3, 66, 4, 77, 88]);
+console.log(titileCase("the laZY FOX is well"));
