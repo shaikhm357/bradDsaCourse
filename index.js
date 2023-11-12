@@ -1,29 +1,25 @@
-console.log(isPalindrome('"hell$#$#o'));
-
-function isPalindrome(str) {
-  let formatted = removeNonAlphanumeric(str.toLowerCase());
-  let reversed = "";
-  for (let i = formatted.length - 1; i >= 0; i--) {
-    reversed += formatted[i];
-  }
-  return formatted === reversed;
-}
-
-function removeNonAlphanumeric(str) {
-  let formatted = "";
+function countVowels(str) {
+  str = str.toLowerCase();
+  let count = 0;
   for (let i = 0; i < str.length; i++) {
-    if (isAlphanumeric(str[i])) {
-      formatted += str[i];
+    if (isVowel(str[i])) {
+      count++;
     }
   }
-  return formatted;
+  return count;
 }
 
-function isAlphanumeric(char) {
-  let code = char.charCodeAt();
-  if ((code >= 48 && code <= 57) || (code >= 97 && code <= 122)) {
-    return true;
-  } else {
-    return false;
+function isVowel(char) {
+  const vowels = ["a", "i", "o", "e", "u"];
+  let isVowel = false;
+  for (let i = 0; i < vowels.length; i++) {
+    if (char === vowels[i]) {
+      isVowel = true;
+      break;
+    }
   }
+  return isVowel;
 }
+
+console.log(countVowels("aieou"));
+// isVowel("o");
