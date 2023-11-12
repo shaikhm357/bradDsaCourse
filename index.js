@@ -1,22 +1,20 @@
-function countOccurences(string, toFindLetter) {
-  let count = 0;
-  for (let i = 0; i < string.length; i++) {
-    if (toFindLetter === string[i]) {
-      count++;
+// build method
+function findMax(arr) {
+  return Math.max(...arr);
+}
+
+console.log(findMax([2, 3, 66, 4, 7, 8]));
+
+// using loop
+function findMaxUsingLoop(arr) {
+  let max = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
     }
   }
-  console.log(count);
+
+  console.log(max);
 }
 
-// countOccurences("hello", " ");
-
-function findOccurence(str, letter) {
-  let countO = 0;
-  str.split("").forEach((element) => {
-    if (element === letter) {
-      countO++;
-    }
-  });
-  console.log(countO);
-}
-findOccurence("hello world", "l");
+findMaxUsingLoop([2, 3, 66, 4, 77, 88]);
