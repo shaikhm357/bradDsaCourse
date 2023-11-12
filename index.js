@@ -1,33 +1,22 @@
-function calculator(num1, num2, operator) {
-  switch (operator) {
-    case "+":
-      return num1 + num2;
-      break;
-    case "-":
-      return num1 - num2;
-      break;
-    case "*":
-      return num1 * num2;
-      break;
-    case "/":
-      return num1 / num2;
-      break;
-    default:
-      return console.log("only support +,-,* and /");
-      break;
+function countOccurences(string, toFindLetter) {
+  let count = 0;
+  for (let i = 0; i < string.length; i++) {
+    if (toFindLetter === string[i]) {
+      count++;
+    }
   }
+  console.log(count);
 }
 
-let arr = ["+", "-", "*", "/", "%"];
-for (let i = 0; i < arr.length; i++) {
-  console.log(calculator(6, 2, arr[i]), "\n");
+// countOccurences("hello", " ");
+
+function findOccurence(str, letter) {
+  let countO = 0;
+  str.split("").forEach((element) => {
+    if (element === letter) {
+      countO++;
+    }
+  });
+  console.log(countO);
 }
-/* out put
-8 
-
-4 
-
-12 
-
-3 
-*/
+findOccurence("hello world", "l");
