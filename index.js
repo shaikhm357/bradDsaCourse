@@ -1,17 +1,21 @@
-function fizzBuzz(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] % 3 === 0 && arr[i] % 5 === 0) {
-      console.log("fizzBuzz");
-      continue;
+function arrIntersection(arr1, arr2) {
+  const intersected = [];
+  for (let i = 0; i < arr1.length; i++) {
+    if (findMatch(arr2, arr1[i])) {
+      if (!intersected.includes(arr1[i])) {
+        intersected.push(arr1[i]);
+      }
     }
-    if (arr[i] % 3 === 0) {
-      console.log("fizz");
-    } else if (arr[i] % 5 === 0) {
-      console.log("Buzz");
-    } else {
-      console.log(arr[i]);
+  }
+  return intersected;
+}
+
+function findMatch(arr2, element) {
+  for (let i = 0; i < arr2.length; i++) {
+    if (arr2[i] === element) {
+      return true;
     }
   }
 }
 
-fizzBuzz([0, 6, 5, 4, 8, 9, 15, 8, 11, 18, 30, 20, 25]);
+console.log(arrIntersection([1, 2, 3, 4, 5, 4, 6], [2, 4, 6, 7]));
