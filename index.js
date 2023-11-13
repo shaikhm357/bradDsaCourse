@@ -1,8 +1,18 @@
-function findMissing(arr) {
+function missingLetter(arr) {
   const n = arr.length + 1;
-  const expectedSum = (n * (n + 1)) / 2;
-  const actualSum = arr.reduce((cur, acc) => cur + acc, 0);
-  return expectedSum - actualSum;
+  let sum = 0;
+  for (let i = 97; i < n + 97; i++) {
+    sum += i;
+  }
+  let actual = 0;
+  for (let i = 0; i < arr.length; i++) {
+    actual += arr[i].charCodeAt();
+  }
+  console.log(String.fromCharCode(sum - actual));
 }
 
-console.log(findMissing([1, 2, 4, 5, 6]));
+missingLetter(["a", "c"]);
+missingLetter(["a", "d", "b"]);
+missingLetter(["a", "e", "c", "b"]);
+missingLetter(["b", "c"]);
+missingLetter(["a", "c"]);
