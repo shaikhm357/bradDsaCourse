@@ -1,21 +1,24 @@
-function arrIntersection(arr1, arr2) {
-  const intersected = [];
-  for (let i = 0; i < arr1.length; i++) {
-    if (findMatch(arr2, arr1[i])) {
-      if (!intersected.includes(arr1[i])) {
-        intersected.push(arr1[i]);
-      }
-    }
+function liked(arr) {
+  const n = arr.length;
+  switch (n) {
+    case 0:
+      console.log(`No One Likes This`);
+      break;
+    case 1:
+      console.log(`${arr[0]} likes this`);
+      break;
+    case 2:
+      console.log(`${arr[0]} and ${arr[1]} like this`);
+      break;
+    case 3:
+      console.log(`${arr[0]} , ${arr[1]} and ${n - 2} other like this`);
+      break;
+    default:
+      console.log(`${arr[0]} , ${arr[1]} and ${n - 2} others like this`);
   }
-  return intersected;
 }
 
-function findMatch(arr2, element) {
-  for (let i = 0; i < arr2.length; i++) {
-    if (arr2[i] === element) {
-      return true;
-    }
-  }
-}
-
-console.log(arrIntersection([1, 2, 3, 4, 5, 4, 6], [2, 4, 6, 7]));
+liked(["lufy", "sanji"]);
+liked(["lufy"]);
+liked(["lufy", "sanji", "nami"]);
+liked(["lufy", "sanji", "nami", "zoro"]);
