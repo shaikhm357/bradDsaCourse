@@ -1,18 +1,16 @@
-function missingLetter(arr) {
-  const n = arr.length + 1;
-  let sum = 0;
-  for (let i = 97; i < n + 97; i++) {
-    sum += i;
+function unique(str) {
+  const uniqueChar = {};
+  for (let i = 0; i < str.length; i++) {
+    if (uniqueChar[str[i]]) {
+      return false;
+    }
+    uniqueChar[str[i]] = true;
   }
-  let actual = 0;
-  for (let i = 0; i < arr.length; i++) {
-    actual += arr[i].charCodeAt();
-  }
-  console.log(String.fromCharCode(sum - actual));
+  return true;
 }
 
-missingLetter(["a", "c"]);
-missingLetter(["a", "d", "b"]);
-missingLetter(["a", "e", "c", "b"]);
-missingLetter(["b", "c"]);
-missingLetter(["a", "c"]);
+console.log(unique("abcde"));
+console.log(unique("abccde"));
+console.log(unique("abcdde"));
+console.log(unique("abcdef"));
+console.log(unique(""));
