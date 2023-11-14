@@ -1,15 +1,21 @@
-function firstRepeatingElement(str) {
-  const charCount = {};
-  for (let i = 0; i < str.length; i++) {
-    let char = str[i];
-    charCount[char] = (charCount[char] || 0) + 1;
-  }
-  for (let i = 0; i < str.length; i++) {
-    let char = str[i];
-    if (charCount[char] === 1) {
-      return char;
+function diceGameSimulation(len) {
+  for (let i = 0; i < len; i++) {
+    let dice1 = Math.floor(Math.random() * 6 + 1);
+    let dice2 = Math.floor(Math.random() * 6 + 1);
+
+    let sum = dice1 + dice2;
+    if (sum === 11 || sum === 7) {
+      console.log(
+        `dice1 : ${dice1} dice2 : ${dice2} sum : ${sum} result : win`
+      );
+    } else if (sum === 2 || sum === 3 || sum === 12) {
+      console.log(
+        `dice1 : ${dice1} dice2 : ${dice2} sum : ${sum} result : lose`
+      );
+    } else {
+      console.log(`roll back`);
     }
   }
 }
 
-console.log(firstRepeatingElement("ababcdd"));
+diceGameSimulation(3);
