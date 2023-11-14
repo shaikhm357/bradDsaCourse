@@ -1,16 +1,15 @@
-function unique(str) {
-  const uniqueChar = {};
+function firstRepeatingElement(str) {
+  const charCount = {};
   for (let i = 0; i < str.length; i++) {
-    if (uniqueChar[str[i]]) {
-      return false;
-    }
-    uniqueChar[str[i]] = true;
+    let char = str[i];
+    charCount[char] = (charCount[char] || 0) + 1;
   }
-  return true;
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (charCount[char] === 1) {
+      return char;
+    }
+  }
 }
 
-console.log(unique("abcde"));
-console.log(unique("abccde"));
-console.log(unique("abcdde"));
-console.log(unique("abcdef"));
-console.log(unique(""));
+console.log(firstRepeatingElement("ababcdd"));
