@@ -1,21 +1,27 @@
-function diceGameSimulation(len) {
-  for (let i = 0; i < len; i++) {
-    let dice1 = Math.floor(Math.random() * 6 + 1);
-    let dice2 = Math.floor(Math.random() * 6 + 1);
+function formateNumnber(numbers) {
+  const areaCode = sliceAndJoin(numbers, 0, 3);
+  const prefix = sliceAndJoin(numbers, 3, 6);
+  const lineNum = sliceAndJoin(numbers, 6);
 
-    let sum = dice1 + dice2;
-    if (sum === 11 || sum === 7) {
-      console.log(
-        `dice1 : ${dice1} dice2 : ${dice2} sum : ${sum} result : win`
-      );
-    } else if (sum === 2 || sum === 3 || sum === 12) {
-      console.log(
-        `dice1 : ${dice1} dice2 : ${dice2} sum : ${sum} result : lose`
-      );
-    } else {
-      console.log(`roll back`);
-    }
-  }
+  return `(${areaCode}) ${prefix}-${lineNum}`;
 }
 
-diceGameSimulation(3);
+function sliceAndJoin(numbers, from, to = numbers.length) {
+  let res = "";
+  while (from < to) {
+    res += numbers[from];
+    from++;
+  }
+  return res;
+}
+// console.log(formateNumnber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
+
+function format(nos) {
+  let noString = nos.join("");
+  let areaCode = noString.substring(0, 3);
+  let prefix = noString.substring(3, 6);
+  let lineNum = noString.substring(6);
+  console.log(`(${areaCode}) ${prefix}-${lineNum}`);
+}
+
+format([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
