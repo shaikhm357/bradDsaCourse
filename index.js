@@ -1,20 +1,26 @@
-function validateEmail(email) {
-  if (email.indexOf("@") === -1) {
-    return false;
-  }
-  const [localPart, domain] = email.split("@");
-  if (localPart.length === 0 || domain.length < 3) {
-    return false;
-  }
-  const domainExtension = domain.split(".");
-  // console.log(domainExtension);
-  if (domainExtension[0].length === 0 || domainExtension[1].length < 2) {
-    return false;
-  }
-  return true;
-}
+const numbers = [1, 2, 3, 4, 5];
 
-console.log(validateEmail("exmaple.com"));
-console.log(validateEmail("exmaple@.com"));
-console.log(validateEmail("exmaple@gmail.com"));
-console.log(validateEmail("exmaple@g.com"));
+const doubleNumbers = numbers.map((index, num, arr) => {
+  // console.log(index);
+  // console.log(arr);
+  return num * 2;
+});
+
+console.log(doubleNumbers);
+
+const evennum = numbers.filter((num) => num > 2);
+console.log(evennum);
+
+const accumulate = numbers.reduce((acc, cur) => acc + cur, 0);
+console.log(accumulate);
+
+// numbers.forEach((num) => console.log(num));
+
+const foundNum = numbers.find((num) => num > 2);
+console.log(foundNum);
+
+const hasEvenNumber = numbers.some((num) => num > 3);
+console.log(hasEvenNumber);
+
+const allNumGeaterThanZero = numbers.every((num) => num > 0);
+console.log(allNumGeaterThanZero);
