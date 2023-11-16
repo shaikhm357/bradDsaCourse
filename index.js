@@ -1,27 +1,20 @@
-function formateNumnber(numbers) {
-  const areaCode = sliceAndJoin(numbers, 0, 3);
-  const prefix = sliceAndJoin(numbers, 3, 6);
-  const lineNum = sliceAndJoin(numbers, 6);
-
-  return `(${areaCode}) ${prefix}-${lineNum}`;
-}
-
-function sliceAndJoin(numbers, from, to = numbers.length) {
-  let res = "";
-  while (from < to) {
-    res += numbers[from];
-    from++;
+function validateEmail(email) {
+  if (email.indexOf("@") === -1) {
+    return false;
   }
-  return res;
+  const [localPart, domain] = email.split("@");
+  if (localPart.length === 0 || domain.length < 3) {
+    return false;
+  }
+  const domainExtension = domain.split(".");
+  // console.log(domainExtension);
+  if (domainExtension[0].length === 0 || domainExtension[1].length < 2) {
+    return false;
+  }
+  return true;
 }
-// console.log(formateNumnber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
 
-function format(nos) {
-  let noString = nos.join("");
-  let areaCode = noString.substring(0, 3);
-  let prefix = noString.substring(3, 6);
-  let lineNum = noString.substring(6);
-  console.log(`(${areaCode}) ${prefix}-${lineNum}`);
-}
-
-format([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
+console.log(validateEmail("exmaple.com"));
+console.log(validateEmail("exmaple@.com"));
+console.log(validateEmail("exmaple@gmail.com"));
+console.log(validateEmail("exmaple@g.com"));
