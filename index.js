@@ -1,16 +1,14 @@
-const products = [
-  { name: "Apple", price: 0.5, quantity: 10 },
-  { name: "Banana", price: 0.3, quantity: 20 },
-  { name: "Orange", price: 0.6, quantity: 15 },
-];
-
-function calculateTotalSalesWithTax(products, taxrate) {
-  const totalSales = products.reduce(
-    (sum, product) => sum + product.price * product.quantity,
-    0
-  );
-
-  console.log(parseFloat((totalSales * taxrate) / 100 + totalSales).toFixed(2));
+function highScoringWord(str) {
+  let words = str.split(" ");
+  let scores = words.map((word) => {
+    return word
+      .split("")
+      .reduce((sum, letter) => sum + letter.charCodeAt(0) - 96, 0);
+  });
+  const maxScore = Math.max(...scores);
+  const indexOfmaxScore = scores.indexOf(maxScore);
+  console.log(words[indexOfmaxScore]);
 }
 
-calculateTotalSalesWithTax(products, 8);
+highScoringWord("Hello my name is xavier");
+highScoringWord("man i need a taxi up to ubud");
