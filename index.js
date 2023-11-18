@@ -1,14 +1,19 @@
-function highScoringWord(str) {
-  let words = str.split(" ");
-  let scores = words.map((word) => {
-    return word
-      .split("")
-      .reduce((sum, letter) => sum + letter.charCodeAt(0) - 96, 0);
-  });
-  const maxScore = Math.max(...scores);
-  const indexOfmaxScore = scores.indexOf(maxScore);
-  console.log(words[indexOfmaxScore]);
-}
+function isAnagram(str1, str2) {
+  let freqCount1 = str1.split("").reduce((acc, char) => {
+    acc[char] = (acc[char] || 0) + 1;
+    return acc;
+  }, {});
 
-highScoringWord("Hello my name is xavier");
-highScoringWord("man i need a taxi up to ubud");
+  let freqCount2 = str2.split("").reduce((acc, char) => {
+    acc[char] = (acc[char] || 0) + 1;
+    return acc;
+  }, {});
+
+  return Object.keys(freqCount1).every(
+    (char) => freqCount1[char] === freqCount2[char]
+  );
+}
+console.log(isAnagram("hello", "helld"));
+console.log(isAnagram("hello", "olleh"));
+console.log(isAnagram("oww", "wow"));
+console.log(isAnagram("app", "ppa"));
