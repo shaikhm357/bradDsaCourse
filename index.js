@@ -1,31 +1,29 @@
-const cars = [
-  { make: "Toyota", model: "Camry", year: 2020, mileage: 30800.22 },
-  { make: "Honda", model: "Civic", year: 2019, mileage: 32000.12 },
-  { make: "Chevrolet", model: "Impala", year: 2021, mileage: 17500 },
-  { make: "Audi", model: "R8", year: 2020, mileage: 13000 },
-  { make: "Tesla", model: "Model 3", year: 2018, mileage: 50000 },
+const array = [
+  { date: "07-06-22", temperature: 30, time: 12.3 },
+  { date: "07-06-22", temperature: 36, time: 14.3 },
+  { date: "07-06-22", temperature: 28, time: 16.3 },
+  { date: "08-06-22", temperature: 30, time: 12.3 },
+  { date: "08-06-22", temperature: 32, time: 12.5 },
+  { date: "08-06-22", temperature: 38, time: 2.3 },
+  { date: "08-06-22", temperature: 29, time: 15.3 },
+  { date: "08-06-22", temperature: 39, time: 17.3 },
 ];
 
-console.log(calculateCarDetails(cars));
+const res = array.reduce((result, entry) => {
+  const { date, temperature } = entry;
+  if (!result[date]) {
+    result[date] = { min: temperature, max: temperature };
+  } else {
+    result[date].min = Math.min(temperature, result[date].min);
+    result[date].max = Math.max(temperature, result[date].max);
+  }
+  return result;
+}, {});
 
-function calculateCarDetails(cars) {
-  const totalMileage = cars.reduce((mile, car) => mile + car.mileage, 0);
-  const averageMileage = totalMileage / cars.length;
+let res1 = Object.keys(res).map((date) => ({
+  date,
+  max: res[date].max,
+  min: res[date].min,
+}));
 
-  const HighestMile = cars.reduce(
-    (highest, car) => (car.mileage > highest.mileage ? car : highest),
-    cars[0]
-  );
-
-  const LowestMile = cars.reduce(
-    (lowest, car) => (car.mileage < lowest.mileage ? car : lowest),
-    cars[0]
-  );
-
-  return {
-    averageMileage: parseFloat(averageMileage.toFixed(2)),
-    totalMileage: parseFloat(totalMileage.toFixed(2)),
-    highestMileage: HighestMile,
-    lowestMileage: LowestMile,
-  };
-}
+console.log(res1);
