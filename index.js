@@ -1,29 +1,20 @@
-const array = [
-  { date: "07-06-22", temperature: 30, time: 12.3 },
-  { date: "07-06-22", temperature: 36, time: 14.3 },
-  { date: "07-06-22", temperature: 28, time: 16.3 },
-  { date: "08-06-22", temperature: 30, time: 12.3 },
-  { date: "08-06-22", temperature: 32, time: 12.5 },
-  { date: "08-06-22", temperature: 38, time: 2.3 },
-  { date: "08-06-22", temperature: 29, time: 15.3 },
-  { date: "08-06-22", temperature: 39, time: 17.3 },
-];
+function validPassword(password) {
+  const isLengthValid = password.length >= 8;
 
-const res = array.reduce((result, entry) => {
-  const { date, temperature } = entry;
-  if (!result[date]) {
-    result[date] = { min: temperature, max: temperature };
-  } else {
-    result[date].min = Math.min(temperature, result[date].min);
-    result[date].max = Math.max(temperature, result[date].max);
-  }
-  return result;
-}, {});
+  const hasUpperCase = password
+    .split("")
+    .some((char) => char === char.toUpperCase() && char != char.toLowerCase());
 
-let res1 = Object.keys(res).map((date) => ({
-  date,
-  max: res[date].max,
-  min: res[date].min,
-}));
+  const hasLowerCase = password
+    .split("")
+    .some((char) => char === char.toLowerCase() && char != char.toUpperCase());
 
-console.log(res1);
+  const hasDigit = password.split("").some((char) => !isNaN(parseInt(char)));
+
+  return isLengthValid && hasUpperCase && hasLowerCase && hasDigit;
+}
+
+console.log(validPassword("abcAAdll1l"));
+console.log(validPassword("abc1238888888"));
+console.log(validPassword("AAAA34343434a"));
+console.log(validPassword("abc123ABC"));
