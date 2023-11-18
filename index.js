@@ -1,19 +1,33 @@
-function isAnagram(str1, str2) {
-  let freqCount1 = str1.split("").reduce((acc, char) => {
-    acc[char] = (acc[char] || 0) + 1;
-    return acc;
-  }, {});
+// function hashTagGenerator(str) {
+//   if (str.length === 0 || str.length > 140) {
+//     return `wrong input`;
+//   }
+//   let words = str
+//     .trim()
+//     .split(" ")
+//     .map((word) => {
+//       return word.charAt(0).toUpperCase() + word.slice(1);
+//     })
+//     .join("");
 
-  let freqCount2 = str2.split("").reduce((acc, char) => {
-    acc[char] = (acc[char] || 0) + 1;
-    return acc;
-  }, {});
+//   return `#${words}`;
+// }
 
-  return Object.keys(freqCount1).every(
-    (char) => freqCount1[char] === freqCount2[char]
-  );
+function hashTagGenerator(str) {
+  const hashtag = str
+    .trim()
+    .split(" ")
+    .reduce((tag, word) => {
+      return tag + word.charAt(0) + word.substring(1);
+    }, "#");
+  return hashtag.length === 1 || hashtag.length > 140 ? false : hashtag;
 }
-console.log(isAnagram("hello", "helld"));
-console.log(isAnagram("hello", "olleh"));
-console.log(isAnagram("oww", "wow"));
-console.log(isAnagram("app", "ppa"));
+
+console.log(hashTagGenerator("the javaScript is awesome"));
+console.log(hashTagGenerator("all is   well  "));
+console.log(hashTagGenerator(""));
+console.log(
+  hashTagGenerator(
+    "the javaScript is awesome awesome awesome awesome v vawesome awesome awesome awesomeawesomeawesomeawesomeawesomeawesomeawesomeawesomeawesomeawesomeawesomeawesomeawesome awesome awesome awesome awesome awesome awesome awesome vawesomeawesome"
+  )
+);
