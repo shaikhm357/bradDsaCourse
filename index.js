@@ -1,13 +1,9 @@
-function countDown(num) {
-  // base case
-  if (num <= 0) {
-    console.log("All Done");
-    return;
+function reverseStr(str) {
+  if (str === "") {
+    return "";
   }
-
-  // recursive call
-  console.log(num);
-  countDown(num - 1);
+  //   console.log(str.substring(1));
+  return reverseStr(str.substring(1)) + str.charAt(0);
 }
 
-countDown(10);
+console.log(reverseStr("hello"));
