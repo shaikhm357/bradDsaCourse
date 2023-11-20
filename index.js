@@ -1,9 +1,8 @@
-function reverseStr(str) {
-  if (str === "") {
-    return "";
+function findfibo(num) {
+  if (num < 2) {
+    return num;
   }
-  //   console.log(str.substring(1));
-  return reverseStr(str.substring(1)) + str.charAt(0);
+  return findfibo(num - 1) + findfibo(num - 2);
 }
 
-console.log(reverseStr("hello"));
+console.log(findfibo(40));
