@@ -1,8 +1,7 @@
-function fact(num) {
-  if (num === 1) {
+function power(base, expo) {
+  if (expo === 0) {
     return 1;
   }
-  return fact(num - 1) * num;
+  return power(base, expo - 1) * base;
 }
-
-console.log(fact(4));
+console.log(power(3, 3));
