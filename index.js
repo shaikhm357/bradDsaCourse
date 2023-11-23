@@ -1,7 +1,7 @@
-function power(base, expo) {
-  if (expo === 0) {
-    return 1;
+function arraySum(arr, index = 0) {
+  if (arr.length === index) {
+    return 0;
   }
-  return power(base, expo - 1) * base;
+  return arraySum(arr, index + 1) + arr[index];
 }
-console.log(power(3, 3));
+console.log(arraySum([1, 2, 3, 4, 5]));
