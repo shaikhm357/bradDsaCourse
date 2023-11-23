@@ -1,11 +1,12 @@
-function numberRange(from, to) {
-  if (from === to) {
-    return [to];
+function flattenArray(arr) {
+  let newArr = [];
+  for (const el of arr) {
+    if (Array.isArray(el)) {
+      newArr = newArr.concat(flattenArray(el));
+    } else {
+      newArr.push(el);
+    }
   }
-
-  let numbers = numberRange(from, to - 1);
-  numbers.push(to);
-  return numbers;
+  return newArr;
 }
-
-console.log(numberRange(3, 10));
+console.log(flattenArray([1, [2, 3], [4, 5, [6]]]));
