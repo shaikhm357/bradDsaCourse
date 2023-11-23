@@ -1,15 +1,13 @@
-function wordFrequencyCounter(str) {
-  const wordsMap = new Map();
-  const words = str.toLowerCase().split(" ");
-  for (const word of words) {
-    if (wordsMap.has(word)) {
-      wordsMap.set(word, wordsMap.get(word) + 1);
+function anagramGrouping(arr) {
+  const anagramGroup = new Map();
+  for (const el of arr) {
+    const sortedWord = el.split("").sort().join("");
+    if (anagramGroup.has(sortedWord)) {
+      anagramGroup.get(sortedWord).push(el);
     } else {
-      wordsMap.set(word, 1);
+      anagramGroup.set(sortedWord, [el]);
     }
   }
-  return wordsMap;
+  return Array.from(anagramGroup.values());
 }
-console.log(
-  wordFrequencyCounter("The quick brown fox jumps over the lazy dog.")
-);
+console.log(anagramGrouping(["cat", "act", "dog", "god", "tac"]));
