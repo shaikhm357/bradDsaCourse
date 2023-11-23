@@ -1,7 +1,11 @@
-function arraySum(arr, index = 0) {
-  if (arr.length === index) {
-    return 0;
+function numberRange(from, to) {
+  if (from === to) {
+    return [to];
   }
-  return arraySum(arr, index + 1) + arr[index];
+
+  let numbers = numberRange(from, to - 1);
+  numbers.push(to);
+  return numbers;
 }
-console.log(arraySum([1, 2, 3, 4, 5]));
+
+console.log(numberRange(3, 10));
