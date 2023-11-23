@@ -1,17 +1,15 @@
-function maxSubarraySum(arr, k) {
-  let maxSum = 0;
-  let currentSum = 0;
-
-  for (let i = 0; i < k; i++) {
-    maxSum += arr[i];
+function wordFrequencyCounter(str) {
+  const wordsMap = new Map();
+  const words = str.toLowerCase().split(" ");
+  for (const word of words) {
+    if (wordsMap.has(word)) {
+      wordsMap.set(word, wordsMap.get(word) + 1);
+    } else {
+      wordsMap.set(word, 1);
+    }
   }
-  currentSum = maxSum;
-  for (let i = k; i < arr.length; i++) {
-    currentSum = currentSum - arr[i - k] + arr[i];
-    maxSum = Math.max(currentSum, maxSum);
-  }
-  return maxSum;
+  return wordsMap;
 }
-const arr1 = [2, 5, 3, 1, 11, 7, 6, 4];
-const k1 = 3;
-console.log(maxSubarraySum(arr1, k1));
+console.log(
+  wordFrequencyCounter("The quick brown fox jumps over the lazy dog.")
+);
