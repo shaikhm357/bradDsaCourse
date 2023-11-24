@@ -1,13 +1,18 @@
-function anagramGrouping(arr) {
-  const anagramGroup = new Map();
-  for (const el of arr) {
-    const sortedWord = el.split("").sort().join("");
-    if (anagramGroup.has(sortedWord)) {
-      anagramGroup.get(sortedWord).push(el);
-    } else {
-      anagramGroup.set(sortedWord, [el]);
+function symmentricDiff(arr1, arr2) {
+  const set1 = new Set(arr1);
+  const set2 = new Set(arr2);
+  const result = [];
+  for (const el of arr1) {
+    if (!set2.has(el)) {
+      result.push(el);
     }
   }
-  return Array.from(anagramGroup.values());
+  for (const el of arr2) {
+    if (!set1.has(el)) {
+      result.push(el);
+    }
+  }
+  return result;
 }
-console.log(anagramGrouping(["cat", "act", "dog", "god", "tac"]));
+
+console.log(symmentricDiff([1, 2, 3], [2, 3, 4]));
