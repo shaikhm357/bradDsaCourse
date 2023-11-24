@@ -1,13 +1,18 @@
-function twoSum(arr, target) {
-  const numSet = new Set();
-  for (let i = 0; i < arr.length; i++) {
-    let complement = target - arr[i];
-    if (numSet.has(complement)) {
-      return [arr.indexOf(complement), i];
+function inSequence(arr) {
+  const numSet = new Set(arr);
+  let longSeq = 0;
+  for (const num of numSet) {
+    if (!numSet.has(num - 1)) {
+      let currNum = num;
+      let currSeq = 1;
+      while (numSet.has(currNum + 1)) {
+        currNum++;
+        currSeq++;
+      }
+      longSeq = Math.max(longSeq, currSeq);
     }
-    numSet.add(arr[i]);
   }
+  return longSeq;
 }
 
-console.log(twoSum([2, 3, 4, 7, 5, 7], 11));
-console.log(twoSum([2, 7, 11, 15], 17));
+console.log(inSequence([100, 4, 200, 1, 2, 3]));
