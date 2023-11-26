@@ -1,15 +1,21 @@
 const Stack = require("./index");
 
-function reverseString(str) {
+function balanceParenthesis(parenthesis) {
   const stack = new Stack();
-  let reverse = "";
-  for (let i = 0; i < str.length; i++) {
-    stack.push(str[i]);
+  for (let i = 0; i < parenthesis.length; i++) {
+    if (parenthesis[i] === "{") {
+      stack.push(parenthesis[i]);
+    } else if (parenthesis[i] === "}") {
+      if (stack.isEmpty()) {
+        return false;
+      }
+      stack.pop();
+    }
   }
-  while (!stack.isEmpty()) {
-    reverse += stack.pop();
-  }
-  return reverse;
+  return stack.isEmpty();
 }
 
-console.log(reverseString("hello"));
+console.log(balanceParenthesis("{{{}}}"));
+console.log(balanceParenthesis("{}{}"));
+console.log(balanceParenthesis("{{{}}"));
+console.log(balanceParenthesis("{{}}{"));
