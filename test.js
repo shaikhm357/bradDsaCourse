@@ -7,12 +7,11 @@ queue.enqueue("c");
 queue.enqueue("e");
 queue.enqueue("g");
 
-queue.dequeue();
-queue.dequeue();
-queue.dequeue();
-queue.dequeue();
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
 
-console.log(queue.peek());
+// console.log(queue.peek());
 
-console.log(queue);
-console.log(queue.isEmpty());
+// console.log(queue);
+// console.log(queue.isEmpty());
