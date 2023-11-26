@@ -1,27 +1,26 @@
-class Stack {
+class Queue {
   constructor() {
     this.maxSize = 100;
-    this.stack = [];
-    this.top = -1;
+    this.queue = [];
+    this.head = 0;
+    this.tail = 0;
   }
 
   // insert in back
-  push(value) {
+  enqueue(item) {
     if (this.isFull()) {
       return false;
     }
-    this.top++;
-    this.stack[this.top] = value;
+    this.queue[this.tail] = item;
+    this.tail++;
     return true;
   }
 
   // remove last ele
-  pop() {
-    if (this.isEmpty()) {
-      return null;
-    }
-    this.top--;
-    return this.stack.pop();
+  dequeue() {
+    const item = this.queue[this.head];
+    this.head++;
+    return item;
   }
 
   // top value
@@ -29,16 +28,19 @@ class Stack {
     if (this.isEmpty()) {
       return null;
     }
-    return this.stack[this.top];
+    return this.queue[this.head];
   }
 
   isEmpty() {
-    return this.top === -1;
+    return this.getLength() === 0;
   }
 
   isFull() {
-    return this.top === this.maxSize - 1;
+    return this.getLength() === this.maxSize;
+  }
+  getLength() {
+    return this.tail - this.head;
   }
 }
 
-module.exports = Stack;
+module.exports = Queue;

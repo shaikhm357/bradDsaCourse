@@ -1,15 +1,18 @@
-const Stack = require("./index");
+const Queue = require("./index");
 
-const stack = new Stack();
+const queue = new Queue();
 
-stack.push(2);
-stack.push(4);
-stack.push(6);
-stack.push(8);
+queue.enqueue("a");
+queue.enqueue("c");
+queue.enqueue("e");
+queue.enqueue("g");
 
-stack.pop();
-stack.pop();
+queue.dequeue();
+queue.dequeue();
+queue.dequeue();
+queue.dequeue();
 
-console.log(stack.peek());
+console.log(queue.peek());
 
-// console.log(stack);
+console.log(queue);
+console.log(queue.isEmpty());
