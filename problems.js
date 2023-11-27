@@ -1,16 +1,17 @@
-const Queue = require("./index");
+const { LinkedList } = require("./index");
 
-function reverseString(str) {
-  const queue = new Queue();
-
+function reverseStr(str) {
+  const list = new LinkedList();
   for (let i = str.length - 1; i >= 0; i--) {
-    queue.enqueue(str[i]);
+    list.add(str[i]);
   }
-  let reverse = "";
-  while (!queue.isEmpty()) {
-    reverse += queue.dequeue();
+  let reverseList = "";
+  let current = list.head;
+  while (current !== null) {
+    reverseList += current.data;
+    current = current.next;
   }
-  return reverse;
+  return reverseList;
 }
 
-console.log(reverseString("hello"));
+console.log(reverseStr("hello world"));

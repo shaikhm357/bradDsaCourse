@@ -1,17 +1,16 @@
-const Queue = require("./index");
+const { LinkedList } = require("./index");
 
-const queue = new Queue();
+const list = new LinkedList();
 
-queue.enqueue("a");
-queue.enqueue("c");
-queue.enqueue("e");
-queue.enqueue("g");
+list.add(102);
+list.add(104);
+list.add(106);
+list.add(108);
 
-console.log(queue.dequeue());
-console.log(queue.dequeue());
-console.log(queue.dequeue());
+list.insertAt(1, "a");
+list.removeFrom(1);
 
-// console.log(queue.peek());
+// console.log(list.get(3));
+// console.log(list.get(0));
 
-// console.log(queue);
-// console.log(queue.isEmpty());
+list.printAll();

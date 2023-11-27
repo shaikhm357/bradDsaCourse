@@ -1,46 +1,79 @@
-class Queue {
-  constructor() {
-    this.maxSize = 100;
-    this.queue = [];
-    this.head = 0;
-    this.tail = 0;
-  }
-
-  // insert in back
-  enqueue(item) {
-    if (this.isFull()) {
-      return false;
-    }
-    this.queue[this.tail] = item;
-    this.tail++;
-    return true;
-  }
-
-  // remove last ele
-  dequeue() {
-    const item = this.queue[this.head];
-    this.head++;
-    return item;
-  }
-
-  // top value
-  peek() {
-    if (this.isEmpty()) {
-      return null;
-    }
-    return this.queue[this.head];
-  }
-
-  isEmpty() {
-    return this.getLength() === 0;
-  }
-
-  isFull() {
-    return this.getLength() === this.maxSize;
-  }
-  getLength() {
-    return this.tail - this.head;
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
   }
 }
 
-module.exports = Queue;
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
+
+  add(data) {
+    const node = new Node(data);
+
+    if (this.head === null) {
+      this.head = node;
+    } else {
+      this.tail.next = node;
+    }
+    this.tail = node;
+  }
+
+  get(index) {
+    let current = this.head;
+    let i = 0;
+    while (i < index) {
+      current = current.next;
+      i++;
+    }
+    return current.data;
+  }
+
+  insertAt(index, data) {
+    if (index === 0) {
+      const node = new Node(data);
+      node.next = this.head;
+    } else {
+      let current = this.head;
+      let prev = null;
+      let i = 0;
+      while (i < index) {
+        prev = current;
+        current = current.next;
+        i++;
+      }
+      const node = new Node(data);
+      node.next = current;
+      prev.next = node;
+    }
+  }
+
+  removeFrom(index) {
+    if (index === 0) {
+      this.head = this.head.next;
+    } else {
+      let current = this.head;
+      let prev = null;
+      let i = 0;
+      while (i < index) {
+        prev = current;
+        current = current.next;
+        i++;
+      }
+      prev.next = current.next;
+    }
+  }
+
+  printAll() {
+    let current = this.head;
+    while (current !== null) {
+      console.log(current.data);
+      current = current.next;
+    }
+  }
+}
+
+module.exports = { LinkedList, Node };
