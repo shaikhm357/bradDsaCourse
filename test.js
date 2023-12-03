@@ -1,16 +1,23 @@
-const { LinkedList } = require("./index");
+const DoublyLinkedList = require("./index");
 
-const list = new LinkedList();
+const list = new DoublyLinkedList();
 
-list.add(102);
-list.add(104);
-list.add(106);
-list.add(108);
+list.append(102);
+list.append(104);
+list.append(106);
+list.append(108);
 
-list.insertAt(1, "a");
-list.removeFrom(1);
+list.prepend("hello");
 
-// console.log(list.get(3));
-// console.log(list.get(0));
+list.insert(2, "world");
 
-list.printAll();
+// console.log(list.get(2));
+
+list.remove(3);
+
+console.log(list.contains(106));
+console.log(list.contains(1006));
+
+// list.printAll();
+
+// console.log(list);
