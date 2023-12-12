@@ -1,23 +1,22 @@
-function quickSort(arr) {
-  if (arr.length <= 1) {
-    return arr;
-  }
-
-  let pivot = arr[0];
-  let left = [];
-  let right = [];
-
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] < pivot) {
-      left.push(arr[i]);
+function binarySearch(arr, target) {
+  let low = 0;
+  let high = arr.length - 1;
+  while (low <= high) {
+    let mid = Math.floor((low + high) / 2);
+    if (arr[mid] === target) {
+      return mid;
+    }
+    if (arr[mid] < target) {
+      low = mid + 1;
     } else {
-      right.push(arr[i]);
+      high = mid - 1;
     }
   }
-
-  return [...quickSort(left), pivot, ...quickSort(right)];
+  return -1
 }
 
-console.log(quickSort([5, 4, 100, 2, 1]));
-console.log(quickSort([4, 5, 2, 1]));
-console.log(quickSort([3, 4, 0, 1, 0, 2, 1]));
+console.log(binarySearch([2, 4, 5, 8, 9, 11], 5));
+console.log(binarySearch([2, 3, 5, 8, 9, 11], 8));
+console.log(binarySearch([2, 4, 5, 8, 9, 11], 9));
+console.log(binarySearch([2, 4, 5, 6, 7, 11], 4));
+console.log(binarySearch([2, 4, 6, 8, 9, 11], 11));
