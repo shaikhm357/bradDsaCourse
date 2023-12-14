@@ -1,22 +1,24 @@
-function binarySearch(arr, target) {
-  let low = 0;
-  let high = arr.length - 1;
-  while (low <= high) {
-    let mid = Math.floor((low + high) / 2);
-    if (arr[mid] === target) {
-      return mid;
-    }
-    if (arr[mid] < target) {
-      low = mid + 1;
-    } else {
-      high = mid - 1;
-    }
+class TreeNode {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
   }
-  return -1
 }
 
-console.log(binarySearch([2, 4, 5, 8, 9, 11], 5));
-console.log(binarySearch([2, 3, 5, 8, 9, 11], 8));
-console.log(binarySearch([2, 4, 5, 8, 9, 11], 9));
-console.log(binarySearch([2, 4, 5, 6, 7, 11], 4));
-console.log(binarySearch([2, 4, 6, 8, 9, 11], 11));
+let a = new TreeNode("a");
+let b = new TreeNode("b");
+let c = new TreeNode("c");
+let d = new TreeNode("d");
+let e = new TreeNode("e");
+let f = new TreeNode("f");
+
+a.left = b;
+a.right = c;
+
+b.left = d;
+b.right = e;
+
+d.right = f;
+
+console.log(b);
