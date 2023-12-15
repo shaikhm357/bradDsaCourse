@@ -23,24 +23,20 @@ c.left = f;
 
 // console.log(root);
 
-console.log((function depth_1st_traversal(root) {
-  if (!root) return [];
+console.log(
+  (function recur_depth_1st_traversal(root) {
+    if (!root) return [];
 
-  const result = [];
-  const stack = [];
-  stack.push(root);
-  while (stack.length > 0) {
-    let current = stack.pop();
-
-    result.push(current.value);
-
-    if (current.right) {
-      stack.push(current.right);
+    const result = [];
+    function traverse(node) {
+      if (node !== null) {
+        result.push(node.value);
+        traverse(node.left);
+        traverse(node.right);
+      }
     }
+    traverse(root);
 
-    if (current.left) {
-      stack.push(current.left);
-    }
-  }
-  return result;
-})(root))
+    return result;
+  })(root)
+);
