@@ -1,5 +1,3 @@
-const Queue = require("./Queue");
-
 class TreeNode {
   constructor(value) {
     this.value = value;
@@ -8,43 +6,30 @@ class TreeNode {
   }
 }
 
-let root = new TreeNode("a");
-let b = new TreeNode("b");
-let c = new TreeNode("c");
-let d = new TreeNode("d");
-let e = new TreeNode("e");
-let f = new TreeNode("f");
+let root = new TreeNode(3);
+let node9 = new TreeNode(9);
+let node20 = new TreeNode(20);
+let node15 = new TreeNode(15);
+let node7 = new TreeNode(7);
 
-root.left = b;
-root.right = c;
+root.left = node9;
+root.right = node20;
 
-b.left = d;
-b.right = e;
+node20.left = node15;
+node20.right = node7;
 
-c.left = f;
-
-// console.log(root);
+//     3
+//   /   \
+// 9      20
+//       /  \
+//      15   7
 
 console.log(
-  (function breadth_1st_traversal(root) {
+  (function maxDepth(root) {
     if (!root) return [];
 
-    const result = [];
-    const queue = new Queue();
-    queue.enqueue(root);
-    // console.log(root);
-    while (!queue.isEmpty()) {
-      let current = queue.dequeue();
-      // console.log(current);
-      result.push(current.value);
-      if (current.left) {
-        queue.enqueue(current.left);
-      }
-      if (current.right) {
-        queue.enqueue(current.right);
-      }
-    }
-
-    return result;
+    const leftDepth = maxDepth(root.left);
+    const rightDepth = maxDepth(root.right);
+    return Math.max(leftDepth, rightDepth) + 1;
   })(root)
 );
