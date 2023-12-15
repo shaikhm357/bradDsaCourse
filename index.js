@@ -1,3 +1,5 @@
+const Queue = require("./Queue");
+
 class TreeNode {
   constructor(value) {
     this.value = value;
@@ -24,18 +26,24 @@ c.left = f;
 // console.log(root);
 
 console.log(
-  (function recur_depth_1st_traversal(root) {
+  (function breadth_1st_traversal(root) {
     if (!root) return [];
 
     const result = [];
-    function traverse(node) {
-      if (node !== null) {
-        result.push(node.value);
-        traverse(node.left);
-        traverse(node.right);
+    const queue = new Queue();
+    queue.enqueue(root);
+    // console.log(root);
+    while (!queue.isEmpty()) {
+      let current = queue.dequeue();
+      // console.log(current);
+      result.push(current.value);
+      if (current.left) {
+        queue.enqueue(current.left);
+      }
+      if (current.right) {
+        queue.enqueue(current.right);
       }
     }
-    traverse(root);
 
     return result;
   })(root)
